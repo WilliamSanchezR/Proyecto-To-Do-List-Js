@@ -9,13 +9,13 @@ const completedList = document.getElementById('cont-completed-list');
 
 // toda etiqueta que vamos crear es apartir de la maqueta HTML pre-existente
 
-function createToDoItems (textoItem){
+function createToDoItem (textoItem){
     
     // creamos el nodo o elemento padre o contenedor
 
         const item = document.createElement('div')
 
-            item.classlist.add('item-to-do');
+            item.classList.add('item-to-do');
         
     // creamos el nodo hijo y le agregamos el type.checkbox
 
@@ -32,7 +32,7 @@ function createToDoItems (textoItem){
     // creamos el ultimo nodo hijo de este div que es un boton que eliminara la tarea
         const deleteBtn = document.createElement('button');
 
-            deleteBtn.innerHTML = <i class="bi bi-x"></i>;
+            deleteBtn.innerHTML = '<i class="bi bi-x"></i>';
 
     // ensamblamos dentro del nodo padre sus nodos hijos, es decir la estructura de la tarea
 
@@ -45,4 +45,20 @@ function createToDoItems (textoItem){
         return item
 
 }
+
+// Detectamos el click o el evento click con un evento de escucha sobre el boton agregar (+) 
+// para que apartir de este evento se agregue la tarea dentro del contenedor 
+
+addBtn.addEventListener('click', ()=>{
+    const textoItem = input.value.trim();
+
+    if (textoItem == "") {
+        alert("No se puede crear una tarea vacia, pato")
+    } else {
+        const newItem = createToDoItem(textoItem);
+        toDoList.appendChild(newItem);
+        input.value = "";
+    }
+});
+
 
