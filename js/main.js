@@ -13,7 +13,7 @@ function createToDoItem (textoItem){
     
     // creamos el nodo o elemento padre o contenedor
 
-        const item = document.createElement('div')
+        const item = document.createElement('div');
 
             item.classList.add('item-to-do');
         
