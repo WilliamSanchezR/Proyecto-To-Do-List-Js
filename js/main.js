@@ -61,4 +61,43 @@ addBtn.addEventListener('click', ()=>{
     }
 });
 
+//La siguiente funcion nos permitira agregar el funcionamiento principal sobre 
+// las tareas es decir marcar la tarea como cmpletada y en dado caso eliminarla
+
+function iventsToItem(item){
+    //Utiamos query selector para capturar el item y el button que estan dentro del item
+    const checkbox = item.querySelector('input');
+        deleteBtn = item.querySelector('button');
+    //completar la tarea 
+    checkbox.addEventListener('change', () => {
+        if (checkbox.checked) {
+            completedList.appendChild(item);
+        } else {
+            toDoList.appendChild(item);
+        }
+    })
+
+    deleteBtn.addEventListener('click', () => {
+        item.remove();
+    })
+}
+
+// Permitir agregar tarea presionando la tecla Enter en el input
+input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+        e.preventDefault(); //Evita que el form se envíe y cause el alert extra
+        const textoItem = input.value.trim();
+        if (textoItem === "") {
+            alert("No se puede crear una tarea vacía");
+        } else {
+            const newItem = createToDoItem(textoItem);
+            toDoList.appendChild(newItem);
+            iventsToItem(newItem);
+            input.value = "";
+        }
+    }
+});
+
+
+
 
